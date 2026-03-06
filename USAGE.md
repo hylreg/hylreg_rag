@@ -45,6 +45,9 @@ cp .env.example .env
 - `RAG_AUTO_PERSIST`：处理/添加文档后自动保存索引（默认 `true`）
 - `RAG_CHUNK_SIZE`、`RAG_CHUNK_OVERLAP`、`RAG_RETRIEVAL_K`
 - `API_MAX_UPLOAD_SIZE_MB`、`API_ALLOWED_EXTENSIONS`
+- `API_AUTH_TOKEN`：启用 Bearer Token 鉴权（可选）
+- `API_RATE_LIMIT_PER_MINUTE`：每 IP 每分钟请求上限（默认 `60`）
+- `API_LEGACY_SUNSET`：旧路由 Sunset 时间（响应头返回）
 
 ## 运行项目
 
@@ -103,26 +106,46 @@ uvicorn src.api.api_server:app --host 0.0.0.0 --port 8000
 
 ### API端点
 
-- `GET /` - 检查服务器状态
-- `POST /process-document/` - 上传并处理文档
-- `POST /query/` - 查询已处理的文档
-- `POST /add-document/` - 向现有知识库添加文档
-- `GET /health` - 健康检查
-- `POST /save-index/` - 手动保存向量索引
-- `POST /reload-index/` - 重新加载向量索引
+- `GET /api/v1/` - 检查服务器状态
+- `POST /api/v1/process-document/` - 上传并处理文档
+- `POST /api/v1/query/` - 查询已处理的文档
+- `POST /api/v1/add-document/` - 向现有知识库添加文档
+- `GET /api/v1/health` - 健康检查
+- `POST /api/v1/save-index/` - 手动保存向量索引
+- `POST /api/v1/reload-index/` - 重新加载向量索引
+- `GET /api/v1/metrics` - Prometheus 指标
+
+说明：旧路径（无 `/api/v1` 前缀）目前仍兼容，但建议新接入统一使用 `v1` 路由。
+说明：旧路径响应头会返回 `Deprecation/Sunset/Link`，用于迁移提示。
+
+### 鉴权与限流
+
+当设置了 `API_AUTH_TOKEN` 后，受保护端点需携带：
+
+```bash
+Authorization: Bearer <your_token>
+```
+
+示例：
+
+```bash
+curl -X POST -H "Authorization: Bearer your_token" -H "Content-Type: application/json" \
+     -d '{"question":"你的问题"}' \
+     http://localhost:8000/api/v1/query/
+```
 
 #### 示例API调用
 
 上传文档：
 ```bash
-curl -X POST -F "file=@path/to/your/document.pdf" http://localhost:8000/process-document/
+curl -X POST -F "file=@path/to/your/document.pdf" http://localhost:8000/api/v1/process-document/
 ```
 
 查询文档：
 ```bash
 curl -X POST -H "Content-Type: application/json" \
      -d '{"question":"你的问题"}' \
-     http://localhost:8000/query/
+     http://localhost:8000/api/v1/query/
 ```
 
 ## 支持的文档格式

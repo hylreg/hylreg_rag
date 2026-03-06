@@ -8,10 +8,10 @@ def load_env_vars():
     加载环境变量，优先从.env文件加载
     """
     # 尝试加载.env文件
-    env_path = os.path.join(os.getcwd(), '.env')
+    env_path = os.path.join(os.getcwd(), ".env")
     if os.path.exists(env_path):
         load_dotenv(env_path)
-    
+
     # 通过配置中心统一验证并返回配置
     return get_settings()
 
@@ -79,7 +79,7 @@ We provide consulting services, custom AI development, and ready-to-use AI-power
 AI Solutions Inc. Service Offerings
 
 Consulting Services:
-Our consulting team provides expert guidance to help businesses identify opportunities for AI implementation. 
+Our consulting team provides expert guidance to help businesses identify opportunities for AI implementation.
 We offer:
 - AI readiness assessment
 - Strategy development
@@ -115,20 +115,20 @@ Our support includes:
 def validate_file_path(file_path: str) -> bool:
     """
     验证文件路径是否存在且为支持的格式
-    
+
     Args:
         file_path: 要验证的文件路径
-        
+
     Returns:
         如果路径有效返回True，否则返回False
     """
     if not os.path.exists(file_path):
         return False
-    
+
     # 检查文件扩展名
-    valid_extensions = ['.pdf', '.txt', '.docx']
+    valid_extensions = [".pdf", ".txt", ".docx"]
     _, ext = os.path.splitext(file_path.lower())
-    
+
     if ext in valid_extensions:
         return True
     elif os.path.isdir(file_path):

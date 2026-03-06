@@ -1,4 +1,6 @@
 # HylReg-RAG: 检索增强生成系统
+[![CI](https://github.com/hylreg/hylreg_rag/actions/workflows/ci.yml/badge.svg)](https://github.com/hylreg/hylreg_rag/actions/workflows/ci.yml)
+[![Security](https://github.com/hylreg/hylreg_rag/actions/workflows/security.yml/badge.svg)](https://github.com/hylreg/hylreg_rag/actions/workflows/security.yml)
 
 这是一个基于检索增强生成（Retrieval-Augmented Generation, RAG）技术的智能问答系统。该系统能够利用外部知识库来回答用户问题，适用于文档问答、知识库查询等场景。
 
@@ -11,6 +13,8 @@
 - 本地向量索引持久化（FAISS）
 - API上传大小与类型安全校验
 - 环境变量集中配置（RAG参数/API参数）
+- API版本化路由（`/api/v1`）与 Prometheus 指标（`/api/v1/metrics`）
+- 支持可选 Bearer Token 鉴权与按 IP 限流
 
 ## 项目结构
 
@@ -45,6 +49,18 @@ hylreg_rag/
 - OpenAI API或其他LLM
 - FastAPI（用于API服务）
 
+## 开源维护
+
+- 贡献指南: [CONTRIBUTING.md](CONTRIBUTING.md)
+- 安全策略: [SECURITY.md](SECURITY.md)
+- 行为准则: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- 变更记录: [CHANGELOG.md](CHANGELOG.md)
+- 许可证: [LICENSE](LICENSE)
+- 架构文档: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- 维护指南: [docs/MAINTENANCE.md](docs/MAINTENANCE.md)
+- 部署指南: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- 运维手册: [docs/RUNBOOK.md](docs/RUNBOOK.md)
+
 ## 安装
 
 使用uv（推荐）：
@@ -57,6 +73,13 @@ uv pip install -e .
 使用pip：
 ```bash
 pip install -r requirements.txt
+```
+
+安装后也可使用控制台命令：
+```bash
+hylreg-rag-demo
+hylreg-rag-cli --help
+hylreg-rag-api
 ```
 
 ## 使用方法

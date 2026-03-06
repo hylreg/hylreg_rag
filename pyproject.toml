@@ -4,6 +4,18 @@ version = "0.1.0"
 description = "A Retrieval-Augmented Generation system for document question answering"
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "HylReg Contributors" }]
+keywords = ["rag", "llm", "retrieval", "langchain", "fastapi"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Framework :: FastAPI",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "langchain>=0.1.20,<0.2.0",
     "langchain-community>=0.0.38,<0.1.0",
@@ -18,7 +30,19 @@ dependencies = [
     "uvicorn>=0.24.0",
     "python-multipart>=0.0.6",
     "openai>=1.0.0",
+    "prometheus-client>=0.20.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/hylreg/hylreg_rag"
+Repository = "https://github.com/hylreg/hylreg_rag"
+Issues = "https://github.com/hylreg/hylreg_rag/issues"
+Changelog = "https://github.com/hylreg/hylreg_rag/blob/main/CHANGELOG.md"
+
+[project.scripts]
+hylreg-rag-cli = "src.cli.entrypoints:cli"
+hylreg-rag-demo = "src.cli.entrypoints:demo"
+hylreg-rag-api = "src.cli.entrypoints:api"
 
 [project.optional-dependencies]
 dev = [
@@ -28,6 +52,7 @@ dev = [
     "flake8>=6.0.0",
     "mypy>=1.0.0",
     "pre-commit>=3.0.0",
+    "pip-audit>=2.7.0",
 ]
 
 [build-system]
@@ -41,3 +66,16 @@ include = ["src*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.mypy]
+python_version = "3.12"
+pretty = true
+show_error_codes = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = false

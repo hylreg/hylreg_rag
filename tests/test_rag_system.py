@@ -3,7 +3,7 @@ import pytest
 pytest.importorskip("langchain_openai")
 pytest.importorskip("langchain_community")
 
-from src.core.rag_system import RAGSystem
+from src.core.rag_system import RAGSystem  # noqa: E402
 
 
 def test_load_documents_routes_directory(tmp_path, monkeypatch):

@@ -22,4 +22,3 @@ def test_get_settings_from_environment(monkeypatch):
     assert settings.api_allowed_extensions == (".txt", ".pdf")
 
     get_settings.cache_clear()
-

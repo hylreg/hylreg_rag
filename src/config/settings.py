@@ -6,13 +6,13 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-def _as_bool(value: str, default: bool) -> bool:
+def _as_bool(value: str | None, default: bool) -> bool:
     if value is None:
         return default
     return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
-def _as_int(value: str, default: int) -> int:
+def _as_int(value: str | None, default: int) -> int:
     if value is None:
         return default
     try:
@@ -34,6 +34,9 @@ class Settings:
     auto_persist: bool
     api_max_upload_size_mb: int
     api_allowed_extensions: tuple[str, ...]
+    api_auth_token: str | None
+    api_rate_limit_per_minute: int
+    api_legacy_sunset: str
 
 
 @lru_cache(maxsize=1)
@@ -63,5 +66,10 @@ def get_settings() -> Settings:
         auto_persist=_as_bool(os.getenv("RAG_AUTO_PERSIST"), True),
         api_max_upload_size_mb=_as_int(os.getenv("API_MAX_UPLOAD_SIZE_MB"), 20),
         api_allowed_extensions=allowed_extensions or (".pdf", ".txt", ".docx"),
+        api_auth_token=os.getenv("API_AUTH_TOKEN"),
+        api_rate_limit_per_minute=_as_int(os.getenv("API_RATE_LIMIT_PER_MINUTE"), 60),
+        api_legacy_sunset=os.getenv(
+            "API_LEGACY_SUNSET",
+            "Wed, 31 Dec 2026 23:59:59 GMT",
+        ),
     )
-

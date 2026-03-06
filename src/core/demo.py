@@ -43,4 +43,3 @@ def run_demo():
             print("参考资料片段:")
             for i, source in enumerate(result["source_documents"][:2], 1):
                 print(f"  {i}. {source[:150]}...")
-

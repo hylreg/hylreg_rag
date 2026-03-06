@@ -12,6 +12,7 @@ from src.core.demo import run_demo
 def run_cli():
     """运行命令行接口"""
     from src.cli.cli_interface import main as cli_main
+
     cli_main()
 
 
@@ -25,23 +26,25 @@ def run_api(host: str, port: int, reload: bool):
 def main():
     parser = argparse.ArgumentParser(description="HylReg-RAG 项目入口")
     parser.add_argument(
-        'command',
-        choices=['demo', 'cli', 'api'],
-        nargs='?',
-        default='demo',
-        help='要运行的命令 (默认: demo)'
+        "command",
+        choices=["demo", "cli", "api"],
+        nargs="?",
+        default="demo",
+        help="要运行的命令 (默认: demo)",
     )
     parser.add_argument("--host", default="0.0.0.0", help="API服务监听地址")
     parser.add_argument("--port", type=int, default=8000, help="API服务端口")
-    parser.add_argument("--reload", action="store_true", help="启用API热重载（开发模式）")
-    
+    parser.add_argument(
+        "--reload", action="store_true", help="启用API热重载（开发模式）"
+    )
+
     args = parser.parse_args()
-    
-    if args.command == 'demo':
+
+    if args.command == "demo":
         run_demo()
-    elif args.command == 'cli':
+    elif args.command == "cli":
         run_cli()
-    elif args.command == 'api':
+    elif args.command == "api":
         run_api(args.host, args.port, args.reload)
 
 
