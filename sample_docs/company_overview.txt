@@ -1,0 +1,10 @@
+
+Sample Document for RAG System Testing
+
+Introduction:
+This document serves as a sample for testing the RAG (Retrieval-Augmented Generation) system.
+Our company, AI Solutions Inc., was founded in 2015 with the mission to advance artificial intelligence technologies for business applications.
+
+Company Overview:
+AI Solutions Inc. is a leading technology company specializing in artificial intelligence and machine learning solutions.
+We provide consulting services, custom AI development, and ready-to-use AI-powered products to clients worldwide.
