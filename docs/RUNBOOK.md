@@ -1,65 +1,65 @@
-# Operations Runbook
+# 运维手册
 
-## Common Incidents
+## 常见故障
 
-## 1. API returns 401
+## 1. API 返回 401
 
-Possible causes:
+可能原因：
 
-- `API_AUTH_TOKEN` configured but request missing/invalid `Authorization` header.
+- 已配置 `API_AUTH_TOKEN`，但请求缺少或携带了无效 `Authorization` 头。
 
-Actions:
+处理步骤：
 
-1. Verify client sends `Authorization: Bearer <token>`.
-2. Confirm server `.env` token value.
+1. 确认客户端发送 `Authorization: Bearer <token>`。
+2. 确认服务端 `.env` 中的 token 值。
 
-## 2. API returns 429
+## 2. API 返回 429
 
-Possible causes:
+可能原因：
 
-- Per-IP request rate exceeded `API_RATE_LIMIT_PER_MINUTE`.
+- 单 IP 请求速率超过 `API_RATE_LIMIT_PER_MINUTE`。
 
-Actions:
+处理步骤：
 
-1. Check traffic source/IP.
-2. Tune limit if needed.
-3. Add queue/retry logic on client side.
+1. 检查流量来源/IP。
+2. 按需调整限流阈值。
+3. 在客户端增加排队/重试逻辑。
 
-## 3. API returns 500 on query
+## 3. 查询时 API 返回 500
 
-Possible causes:
+可能原因：
 
-- RAG system not initialized
-- Missing/invalid OpenAI credentials
-- Vector index unavailable
+- RAG 系统未初始化
+- OpenAI 凭据缺失或无效
+- 向量索引不可用
 
-Actions:
+处理步骤：
 
-1. Check service logs.
-2. Check `OPENAI_API_KEY`.
-3. Check `/api/v1/health`.
-4. Trigger `/api/v1/reload-index/` if index exists.
+1. 检查服务日志。
+2. 检查 `OPENAI_API_KEY`。
+3. 检查 `/api/v1/health`。
+4. 若索引存在，触发 `/api/v1/reload-index/`。
 
-## 4. Upload fails with 413
+## 4. 上传失败并返回 413
 
-Possible causes:
+可能原因：
 
-- File exceeds `API_MAX_UPLOAD_SIZE_MB`.
+- 文件超过 `API_MAX_UPLOAD_SIZE_MB` 限制。
 
-Actions:
+处理步骤：
 
-1. Reduce upload file size.
-2. Increase configured limit carefully.
+1. 减小上传文件大小。
+2. 谨慎增大配置上限。
 
-## Routine Checks
+## 日常巡检
 
 1. `GET /api/v1/health`
 2. `GET /api/v1/metrics`
-3. Review request latency and error rate trends
-4. Confirm backups of vectorstore are recent
+3. 观察请求延迟与错误率趋势
+4. 确认向量库备份是否及时
 
-## Emergency Rollback
+## 紧急回滚
 
-1. Roll back to previous release tag
-2. Restore previous vectorstore backup if schema/compat changed
-3. Restart service and re-check health
+1. 回滚到上一个发布标签
+2. 若 schema/兼容性变化，恢复上一个向量库备份
+3. 重启服务并重新检查健康状态

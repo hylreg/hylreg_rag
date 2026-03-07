@@ -1,26 +1,26 @@
-# Contributing Guide
+# 贡献指南
 
-Thanks for considering a contribution.
+感谢你考虑为本项目做出贡献。
 
-## Development Setup
+## 开发环境准备
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
+1. 创建并激活虚拟环境。
+2. 安装依赖：
 ```bash
 uv pip install -e ".[dev]"
 ```
-3. Install git hooks:
+3. 安装 git hooks：
 ```bash
 pre-commit install
 ```
-4. Copy environment template:
+4. 复制环境变量模板：
 ```bash
 cp .env.example .env
 ```
 
-## Local Checks
+## 本地检查
 
-Run all checks before opening a PR:
+在提交 PR 前运行所有检查：
 
 ```bash
 make test
@@ -29,26 +29,26 @@ flake8 src tests
 mypy src
 ```
 
-## Branching and PRs
+## 分支与 PR
 
-1. Create a feature branch from `main`.
-2. Keep changes focused and small.
-3. Add or update tests for behavior changes.
-4. Update docs (`README.md`, `USAGE.md`, changelog) when needed.
-5. Open a PR using the template and ensure CI is green.
+1. 从 `main` 创建功能分支。
+2. 保持改动聚焦且尽量小。
+3. 对行为变更补充或更新测试。
+4. 必要时更新文档（`README.md`、`USAGE.md`、changelog）。
+5. 使用模板创建 PR，并确保 CI 通过。
 
-## Commit Messages
+## 提交信息
 
-Use concise, imperative commits, for example:
+使用简洁的祈使句式提交信息，例如：
 
 - `feat(api): add upload size guard`
 - `fix(core): handle empty vector index`
 - `docs: clarify environment variables`
 
-## Reporting Issues
+## 问题反馈
 
-Use the issue templates and include:
+请使用 issue 模板并提供：
 
-- Reproduction steps
-- Expected vs actual behavior
-- Environment details (OS, Python version, package versions)
+- 复现步骤
+- 期望行为与实际行为
+- 环境信息（操作系统、Python 版本、依赖版本）

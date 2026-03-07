@@ -1,28 +1,28 @@
-# Changelog
+# 变更日志
 
-All notable changes to this project will be documented in this file.
+本文件记录项目中所有重要变更。
 
-The format is based on Keep a Changelog, and this project follows Semantic Versioning.
+格式遵循 Keep a Changelog，版本号遵循语义化版本（Semantic Versioning）。
 
 ## [Unreleased]
 
 ## [0.1.0] - 2026-03-07
 
-### Added
-- Centralized configuration module with environment-driven RAG/API settings.
-- Vector index persistence and reload support for CLI and API.
-- API upload guards (file extension and file size validation).
-- Test suite for config, utils, API behavior, and RAG document routing.
-- Open source maintenance assets:
-  - License
-  - Contributing guide
-  - Code of conduct
-  - Security policy
-  - Issue and PR templates
-  - CI workflow
+### 新增
+- 新增集中式配置模块，支持基于环境变量的 RAG/API 参数配置。
+- 为 CLI 和 API 增加向量索引持久化与重载能力。
+- 为 API 上传增加防护（文件扩展名与文件大小校验）。
+- 增加配置、工具函数、API 行为与 RAG 文档路由的测试套件。
+- 增加开源维护资产：
+  - 许可证
+  - 贡献指南
+  - 行为准则
+  - 安全策略
+  - Issue/PR 模板
+  - CI 工作流
 
-### Changed
-- Reworked imports to package-based `src.*` style.
-- Replaced deprecated FastAPI startup event usage with lifespan handlers.
-- Updated dependency constraints for LangChain compatibility.
-- Replaced pseudo sample PDF/DOCX generation with real text samples.
+### 变更
+- 将导入路径重构为基于包的 `src.*` 风格。
+- 使用 lifespan 处理器替换已弃用的 FastAPI startup 事件。
+- 更新依赖约束以兼容 LangChain。
+- 将伪造的 PDF/DOCX 示例生成替换为真实文本样例。

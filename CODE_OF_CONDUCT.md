@@ -1,48 +1,38 @@
-# Code of Conduct
+# 行为准则
 
-## Our Pledge
+## 我们的承诺
 
-We as members, contributors, and maintainers pledge to make participation in our
-community a harassment-free experience for everyone, regardless of age, body
-size, visible or invisible disability, ethnicity, sex characteristics, gender
-identity and expression, level of experience, education, socio-economic status,
-nationality, personal appearance, race, religion, or sexual identity and
-orientation.
+作为成员、贡献者和维护者，我们承诺让每个人都能在社区中免受骚扰地参与，不因年龄、体型、可见或不可见的残障、族裔、性别特征、性别认同与表达、经验水平、教育背景、社会经济地位、国籍、外貌、种族、宗教或性取向而受到歧视。
 
-## Our Standards
+## 我们的标准
 
-Examples of behavior that contributes to a positive environment include:
+有助于营造积极环境的行为示例：
 
-- Demonstrating empathy and kindness
-- Respecting differing opinions and experiences
-- Giving and accepting constructive feedback
-- Taking responsibility and apologizing when mistakes are made
+- 展现同理心与善意
+- 尊重不同观点和经历
+- 提供并接受建设性反馈
+- 在犯错时承担责任并道歉
 
-Examples of unacceptable behavior include:
+不可接受的行为示例：
 
-- Harassment, intimidation, or discriminatory language
-- Personal attacks or trolling
-- Publishing private information without permission
-- Other conduct inappropriate in a professional setting
+- 骚扰、恐吓或歧视性语言
+- 人身攻击或恶意挑衅
+- 未经许可公开他人隐私信息
+- 其他不符合专业场景的行为
 
-## Enforcement Responsibilities
+## 执行责任
 
-Project maintainers are responsible for clarifying and enforcing standards of
-acceptable behavior and may take appropriate corrective action in response to
-unacceptable behavior.
+项目维护者负责澄清并执行可接受行为标准，并可对不可接受行为采取适当的纠正措施。
 
-## Scope
+## 适用范围
 
-This Code of Conduct applies within project spaces and in public spaces when an
-individual is representing the project or its community.
+本行为准则适用于项目空间内，以及个人代表项目或其社区的公共场合。
 
-## Reporting
+## 报告渠道
 
-Report incidents to project maintainers through repository security/contact
-channels. Reports will be handled promptly and fairly.
+请通过仓库安全/联系渠道向项目维护者报告事件。所有报告将被及时且公平地处理。
 
-## Attribution
+## 致谢
 
-This document is adapted from the Contributor Covenant, version 2.1:
+本文档改编自 Contributor Covenant 2.1 版本：
 https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
-

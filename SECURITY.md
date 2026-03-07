@@ -1,26 +1,25 @@
-# Security Policy
+# 安全策略
 
-## Supported Versions
+## 支持版本
 
-Security fixes are provided for the latest release line.
+安全修复仅提供给最新发布线。
 
-| Version | Supported |
+| 版本 | 是否支持 |
 | --- | --- |
-| 0.1.x | Yes |
-| < 0.1.0 | No |
+| 0.1.x | 是 |
+| < 0.1.0 | 否 |
 
-## Reporting a Vulnerability
+## 漏洞报告
 
-Please do not open public issues for security vulnerabilities.
+请不要通过公开 issue 报告安全漏洞。
 
-Contact: hylreg@qq.com
+联系方式：hylreg@qq.com
 
-Send a private report with:
+请通过私密渠道发送报告，包含：
 
-- Affected component and version
-- Reproduction details
-- Impact assessment
-- Suggested remediation (if available)
+- 受影响组件与版本
+- 复现细节
+- 影响评估
+- 建议修复方案（如有）
 
-Maintainers will acknowledge receipt within 72 hours and provide updates on
-triage and remediation timeline.
+维护者会在 72 小时内确认收到，并同步分诊与修复时间线。

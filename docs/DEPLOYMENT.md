@@ -1,49 +1,49 @@
-# Deployment Guide
+# 部署指南
 
-## Prerequisites
+## 前置条件
 
 - Python 3.12+
-- Valid `OPENAI_API_KEY`
-- Reverse proxy (recommended): Nginx or Caddy
+- 有效的 `OPENAI_API_KEY`
+- 反向代理（推荐）：Nginx 或 Caddy
 
-## Environment
+## 环境配置
 
-Create `.env` from template and set:
+从模板创建 `.env` 并设置：
 
 - `OPENAI_API_KEY`
 - `RAG_VECTORSTORE_DIR`
-- `API_AUTH_TOKEN` (recommended in production)
+- `API_AUTH_TOKEN`（生产环境推荐）
 - `API_RATE_LIMIT_PER_MINUTE`
 
-## Start Service
+## 启动服务
 
 ```bash
 python run.py api --host 0.0.0.0 --port 8000
 ```
 
-## Health and Metrics
+## 健康检查与指标
 
-- Health: `GET /api/v1/health`
-- Metrics: `GET /api/v1/metrics`
+- 健康检查：`GET /api/v1/health`
+- 指标：`GET /api/v1/metrics`
 
-## Reverse Proxy Notes
+## 反向代理说明
 
-1. Forward `X-Forwarded-For` to preserve client IP for rate limiting.
-2. Terminate TLS at proxy.
-3. Limit request body size at proxy and app layers.
+1. 转发 `X-Forwarded-For`，用于按客户端 IP 限流。
+2. 在代理层终止 TLS。
+3. 在代理层和应用层同时限制请求体大小。
 
-## Persistence and Backup
+## 持久化与备份
 
-- Vector index directory: `RAG_VECTORSTORE_DIR` (default `data/vectorstore`)
-- Backup strategy:
-1. Periodic snapshot of vectorstore directory
-2. Version backups by date
-3. Verify restore by reloading index endpoint
+- 向量索引目录：`RAG_VECTORSTORE_DIR`（默认 `data/vectorstore`）
+- 备份策略：
+1. 周期性快照向量库目录
+2. 按日期做版本化备份
+3. 通过重载索引接口验证可恢复性
 
-## Upgrade Checklist
+## 升级检查清单
 
-1. Pull latest code
-2. Install dependencies (`pip install -e .`)
-3. Run tests (`pytest -q`)
-4. Restart service
-5. Verify `/api/v1/health` and `/api/v1/metrics`
+1. 拉取最新代码
+2. 安装依赖（`pip install -e .`）
+3. 运行测试（`pytest -q`）
+4. 重启服务
+5. 验证 `/api/v1/health` 和 `/api/v1/metrics`

@@ -1,37 +1,36 @@
-# Maintenance Guide
+# 维护指南
 
-## Release Process
+## 发布流程
 
-1. Ensure `main` is green in CI.
-2. Update `CHANGELOG.md` under `Unreleased`.
-3. Create a version tag:
+1. 确保 `main` 分支在 CI 中为绿色。
+2. 在 `CHANGELOG.md` 的 `Unreleased` 下更新变更。
+3. 创建版本标签：
 ```bash
 git tag v0.1.1
 git push origin v0.1.1
 ```
-4. `release.yml` builds artifacts and creates a GitHub release.
-5. If `PYPI_API_TOKEN` is configured, package is also published to PyPI.
+4. `release.yml` 会构建产物并创建 GitHub Release。
+5. 若已配置 `PYPI_API_TOKEN`，还会同时发布到 PyPI。
 
-## Dependency Management
+## 依赖管理
 
-- Dependabot opens weekly updates for pip and GitHub Actions.
-- Review dependency PRs with:
+- Dependabot 每周会为 pip 和 GitHub Actions 发起更新。
+- 通过以下命令审查依赖 PR：
 ```bash
 make check
 ```
-- Security scan runs via `security.yml` and `pip-audit`.
+- 安全扫描通过 `security.yml` 和 `pip-audit` 运行。
 
-## Branch Protection (Recommended)
+## 分支保护（推荐）
 
-Enable on `main`:
+在 `main` 上启用：
 
-- Require PR reviews (at least 1)
-- Require status checks: CI + Security
-- Require conversation resolution
-- Restrict direct pushes
+- 必须通过 PR 审核（至少 1 人）
+- 必须通过状态检查：CI + Security
+- 必须解决所有会话评论
+- 限制直接 push
 
-## Ownership
+## 负责人
 
-- Update `.github/CODEOWNERS` with real teams/users.
-- Ensure at least two maintainers can merge and release.
-
+- 在 `.github/CODEOWNERS` 中更新真实团队/用户。
+- 确保至少两位维护者具备合并与发布权限。
